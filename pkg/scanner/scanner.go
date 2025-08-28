@@ -2,7 +2,6 @@ package scanner
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -140,9 +139,6 @@ func (s *Scanner) analyzeApplication(appPath string) (*Application, error) {
 
 // getAppInfo extracts basic application information
 func (s *Scanner) getAppInfo(app *Application) error {
-	// Try to read Info.plist
-	infoPlistPath := filepath.Join(app.Path, "Contents", "Info.plist")
-	
 	// For now, we'll use basic file info
 	if info, err := os.Stat(app.Path); err == nil {
 		app.LastModified = info.ModTime()

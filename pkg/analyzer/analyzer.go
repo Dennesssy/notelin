@@ -1,7 +1,6 @@
 package analyzer
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
