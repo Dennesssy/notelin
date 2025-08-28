@@ -5,8 +5,6 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-
-	"github.com/charmbracelet/gum/style"
 )
 
 type App struct {
