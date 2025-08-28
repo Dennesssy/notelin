@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.21.x
+
+    - name: Run tests
+      run: go test -v ./...
+
+    - name: Build all platforms
+      run: make build-all
+
+    - name: Create release archives
+      run: make release
+
+    - name: Generate release notes
+      id: release-notes
+      run: |
+        # Extract version from tag
+        VERSION=${GITHUB_REF#refs/tags/}
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        
+        # Generate changelog since last tag
+        LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+        if [ -n "$LAST_TAG" ]; then
+          echo "## Changes since $LAST_TAG" > release-notes.md
+          git log --oneline --no-merges $LAST_TAG..HEAD >> release-notes.md
+        else
+          echo "## Initial Release" > release-notes.md
+          echo "First release of No-Tel-in privacy scanner." >> release-notes.md
+        fi
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release ${{ steps.release-notes.outputs.VERSION }}
+        body_path: release-notes.md
+        files: |
+          dist/archives/*
+        draft: false
+        prerelease: ${{ contains(steps.release-notes.outputs.VERSION, 'rc') || contains(steps.release-notes.outputs.VERSION, 'beta') || contains(steps.release-notes.outputs.VERSION, 'alpha') }}
+
+  homebrew:
+    name: Update Homebrew Formula
+    needs: release
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.ref, 'rc') && !contains(github.ref, 'beta') && !contains(github.ref, 'alpha') }}
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Extract version
+      id: version
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/v}
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Update Homebrew Formula
+      env:
+        VERSION: ${{ steps.version.outputs.VERSION }}
+        GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+      run: |
+        # This would update the Homebrew formula in a separate repository
+        echo "Would update Homebrew formula for version $VERSION"
+        # Implementation depends on your Homebrew tap setup
