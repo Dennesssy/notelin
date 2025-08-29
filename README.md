@@ -31,146 +31,36 @@ Ever wonder what your apps are really doing behind the scenes? **No-Tel-in** is 
 - 📈 **Detailed Reports** → Export comprehensive privacy assessments
 - 🛡️ **Zero Telemetry** → This tool practices what it preaches
 
-## Terminal Demo
+## 🎬 Live Demo
+
+**See No-Tel-in in action discovering and disabling Gemini Code telemetry:**
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/notelin/notelin/main/docs/demo.gif" alt="No-Tel-in Demo" width="800"/>
-</div>
 
-### Interactive Demo (HTML)
+### [🖥️ View Interactive Terminal Demo](https://dennesssy.github.io/notelin/terminal-demo.html)
+
+*Click above to see a realistic workflow of discovering and disabling app telemetry*
+
+</div>
 
 <details>
-<summary>🎬 Click to see live terminal demo</summary>
+<summary>📖 What the demo shows</summary>
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .terminal {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            font-family: 'Monaco', 'Menlo', monospace;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            overflow: auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .prompt { color: #98c379; }
-        .command { color: #61dafb; }
-        .output { color: #d4d4d4; }
-        .highlight { color: #e06c75; }
-        .success { color: #98c379; }
-        .warning { color: #e5c07b; }
-        .header { color: #c678dd; font-weight: bold; }
-        .logo { color: #ff6b9d; }
-        .blink { animation: blink 1s infinite; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-    </style>
-</head>
-<body>
+**Complete workflow demonstration:**
+- 🚀 **App Launch** → Beautiful terminal interface with ASCII art
+- 🔍 **Discovery Phase** → Scanning system and finding 23 apps with data collection
+- 🎯 **Risk Assessment** → Apps categorized by privacy risk (High/Medium/Low)
+- 🤖 **Deep Analysis** → Detailed investigation of Gemini Code's telemetry
+- 🛡️ **Privacy Action** → Disabling analytics, Firebase, and Sentry tracking
+- ✅ **Results** → Privacy score improved from 85/100 to 15/100
 
-<div class="terminal">
-<div class="prompt">$ </div><div class="command">notelin</div><br/>
-
-<div class="logo">
-┌─ No-Tel-in Privacy Scanner ───────────────────────────────────┐
-│                                                               │
-│ ███╗   ██╗ ██████╗       ████████╗███████╗██╗         ██╗███╗ │
-│ ████╗  ██║██╔═══██╗      ╚══██╔══╝██╔════╝██║         ██║████╗│
-│ ██╔██╗ ██║██║   ██║ █████╗ ██║   █████╗  ██║   █████╗██║██╔██│
-│ ██║╚██╗██║██║   ██║ ╚════╝ ██║   ██╔══╝  ██║   ╚════╝██║██║╚█│
-│ ██║ ╚████║╚██████╔╝        ██║   ███████╗███████╗      ██║██║ ╚│
-│ ╚═╝  ╚═══╝ ╚═════╝         ╚═╝   ╚══════╝╚══════╝      ╚═╝╚═╝  │
-│                                                               │
-│         📡 Telemetry & Sentry Management Scanner             │
-│           "Ain't no telling what data they be lyin about"    │
-│                            v1.0.0                            │
-└───────────────────────────────────────────────────────────────┘
-</div>
-
-<div class="success">=> 🕵️ Start Investigation</div>
-<div class="output">   ⚙️ Settings</div> 
-<div class="output">   📚 Help</div>
-<div class="output">   ❌ Exit</div>
-
-<br/>
-<div class="output">🔍 Discovering applications...</div>
-<div class="output">[████████████████████████████████████████] 100%</div>
-<div class="output">Found 12 applications • 6 with data collection potential</div>
-
-<br/>
-<div class="output">
-┌─ Suspicious Apps Detected ────────────────────────────────────┐
-│                                                               │
-│ <div class="highlight">🚨 HIGH SUS</div>                                                   │
-│ ├─ 🌐 Nicegram Desktop            <div class="highlight">"They definitely lyin"</div>      │
-│ └─ 🎵 Spotify                     <div class="highlight">"Data hungry"</div>              │
-│                                                               │
-│ <div class="warning">⚠️  MEDIUM SUS</div>                                                │
-│ ├─ 💻 Blackbox Terminal           <div class="warning">"Electron = telemetry"</div>     │
-│ ├─ 🎨 Adobe Creative Cloud       <div class="warning">"Always watching"</div>          │
-│ └─ 💬 Zoom                       <div class="warning">"Meeting your data"</div>        │
-│                                                               │
-│ <div class="success">✅ LOW SUS</div>                                                    │
-│ ├─ 📝 VS Code                    <div class="success">"Open but still tracking"</div>   │
-│ └─ 🗂️  The Unarchiver            <div class="success">"Actually clean"</div>           │
-│                                                               │
-│ [↑↓] Investigate [ENTER] Deep Dive [ESC] Back [Q] Quit      │
-└───────────────────────────────────────────────────────────────┘
-</div>
-
-<br/>
-<div class="success">Selected: 💻 Blackbox Terminal</div>
-<div class="output">🔍 Deep diving into application data...</div>
-
-<br/>
-<div class="output">
-┌─ Application Analysis Results ────────────────────────────────┐
-│                                                               │
-│ 💻 Application: Blackbox Terminal                            │
-│ 📊 Risk Level: <div class="warning">⚠️  MEDIUM</div>                                     │
-│ 📡 Telemetry: <div class="highlight">DETECTED</div>                                       │
-│ 🗂️  Data Collection: <div class="highlight">Active</div>                                   │
-│                                                               │
-│ Found Evidence:                                               │
-│ • Chromium-based cache (24 files, 2.3MB)                   │
-│ • Session tracking (recent directories)                      │
-│ • Environment variable logging                               │
-│ • Network state persistence                                  │
-│                                                               │
-│ Privacy Score: <div class="warning">67/100</div> (Higher = Worse)                       │
-└───────────────────────────────────────────────────────────────┘
-</div>
-
-<br/>
-<div class="output">Available Actions:</div>
-<div class="success">=> 🧹 Clean Application Data</div>
-<div class="output">   📊 Export Detailed Report</div>
-<div class="output">   ⚙️ Configure Privacy Settings</div>
-<div class="output">   🗑️ Uninstall Application</div>
-<div class="output">   ← Back to App List</div>
-
-<br/>
-<div class="output">🧹 Cleaning application data...</div>
-<div class="output">[████████████████████████████████████████] 100%</div>
-
-<div class="success">
-✅ Application data cleaned successfully!
-• Cleared 24 cache files (2.3 MB freed)
-• Removed recent directory history  
-• Cleared session storage
-• Environment logs preserved (app needs them)
-</div>
-
-<div class="prompt">$ </div><div class="blink">_</div>
-
-</div>
-
-</body>
-</html>
-```
+**Real evidence found:**
+- Google Analytics integration
+- Firebase Remote Config (A/B testing)
+- Crash reporting to Sentry  
+- Code completion analytics
+- Session duration logging
+- Feature usage metrics
 
 </details>
 
