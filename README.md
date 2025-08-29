@@ -37,7 +37,7 @@ Ever wonder what your apps are really doing behind the scenes? **No-Tel-in** is 
 
 <div align="center">
 
-### [🖥️ View Interactive Terminal Demo](https://dennesssy.github.io/notelin/terminal-demo.html)
+### [🖥️ View Interactive Terminal Demo](https://htmlpreview.github.io/?https://github.com/Dennesssy/notelin/blob/main/docs/terminal-demo.html)
 
 *Click above to see a realistic workflow of discovering and disabling app telemetry*
 
